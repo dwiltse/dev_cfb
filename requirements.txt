@@ -1,0 +1,6 @@
+requests
+azure-storage-blob
+pandas
+numpy
+azure-keyvault-secrets
+azure-identity
