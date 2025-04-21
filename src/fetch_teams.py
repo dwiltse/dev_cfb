@@ -23,9 +23,12 @@ def main():
     # Fetch teams data
     teams_data = cfbd_client.get_teams()
     
+
     # Store in Azure Blob Storage
-    azure_client.upload_json_data(teams_data, 'teams/teams.json')
+    print(f"Uploading to container: {container_name}, blob: {'cfbd/teams/teams.json'}")
+    azure_client.upload_json_data(teams_data, 'cfbd/teams/teams.json')
     print(f"Successfully fetched and stored {len(teams_data)} teams")
+
 
 if __name__ == '__main__':
     main()
