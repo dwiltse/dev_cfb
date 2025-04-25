@@ -32,3 +32,13 @@ class CFBDataClient:
         response = requests.get(endpoint, headers=self.headers, params=params)
         response.raise_for_status()
         return response.json()
+    
+    def get_fbs_teams(self, year: int = None):
+        """Fetch FBS teams for a specific year from the API"""
+        endpoint = f"{self.base_url}/teams/fbs"
+        params = {}
+        if year:
+            params['year'] = year
+        response = requests.get(endpoint, headers=self.headers, params=params)
+        response.raise_for_status()
+        return response.json()
