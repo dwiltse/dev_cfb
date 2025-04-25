@@ -22,8 +22,15 @@ def main():
     cfbd_client = CFBDataClient(cfbd_api_key)
     azure_client = AzureStorageClient(azure_connection_string, container_name)
 
-    # Fetch FBS teams data for a specific year
-    year = 2023
+    # Prompt user for year
+    year_input = input("Enter the year to fetch FBS teams for (e.g., 2023): ")
+    try:
+        year = int(year_input)
+    except ValueError:
+        print("Invalid year entered. Please enter a valid integer year.")
+        return
+
+    # Fetch FBS teams data for the specified year
     teams_data = cfbd_client.get_fbs_teams(year=year)
 
     # Try to extract the year from the teams_data if available, else use the requested year
